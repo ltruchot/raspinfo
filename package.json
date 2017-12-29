@@ -1,6 +1,6 @@
 {
   "name": "raspinfo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -12,7 +12,7 @@
     "release": "ng build --prod --aot",
     "update": "rm -rf node_modules && npm cache verify && npm i",
     "serve": "npm run cleanserver && npm run launchserver && pm2 logs raspinfo-dev",
-    "firstdeploy": "npm run update && npm run release && npm run releaseserver && pm2 start ./dist/server.js --name raspinfo",
+    "firstdeploy": "npm run update && npm run release && npm run releaseserver && pm2 start ./dist/server.js --name raspinfo -i 1",
     "deploy": "npm run release && npm run releaseserver && pm2 restart raspinfo",
     "releaseserver": "webpack -p --config ./server/server.webpack.config.ts",
     "launchserver": "pm2 install typescript && pm2 start ./server/server.ts --watch -f --name raspinfo-dev",
